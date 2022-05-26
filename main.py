@@ -13,6 +13,11 @@ class Converter:
                             pady = 10)
     self.main_frame.grid()
 
+    # Home Screen Heading:
+    self.home_scrn_label = Label(self.main_frame, text = "Blackjack",
+                                font = ("Italic", "16", "bold"),
+                                bg = "gold", padx = 10, pady = 10)
+    self.home_scrn_label.grid(row = 0)
 
 
 
