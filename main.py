@@ -19,6 +19,11 @@ class Converter:
                                 bg = "gold", padx = 10, pady = 10)
     self.home_scrn_label.grid(row = 0)
 
+    # Single Player button:
+    self.sngle_button = Button(self.main_frame, text = "Single Player",
+                              padx = 10, pady = 10)
+    self.sngle_button.grid(row = 1)
+
 
 
 # main routine:
