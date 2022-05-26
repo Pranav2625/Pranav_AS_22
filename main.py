@@ -9,7 +9,7 @@ class Converter:
     # Formatting variables:
 
     # Main Screen GUI:
-    self.main_frame = Frame(width = 500, height = 500, bg = "maroon", 
+    self.main_frame = Frame(width = 600, height = 600, bg = "maroon", 
                             pady = 10)
     self.main_frame.grid()
 
