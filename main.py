@@ -16,8 +16,8 @@ class Converter:
     # Home Screen Heading:
     self.home_scrn_label = Label(self.main_frame, text = "Blackjack",
                                 font = ("Italic", "16", "bold"),
-                                bg = "gold", padx = 10, pady = 10)
-    self.home_scrn_label.grid(row = 0, column = 0)
+                                bg = "gold", padx = 200, pady = 10)
+    self.home_scrn_label.grid(row = 0)
 
     # Single Player button:
     self.sngle_button = Button(self.main_frame, text = "Single Player",
@@ -28,6 +28,9 @@ class Converter:
     self.multi_buttons = Button(self.main_frame, text = "MultiPlayer",
                                 padx = 10, pady = 10)
     self.multi_buttons.grid(row = 2)
+
+    # # Multiplayer Drop-down:
+    # self.mult_drop = OptionMenu(root)
 
 
 
