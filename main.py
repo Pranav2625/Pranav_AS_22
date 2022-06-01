@@ -24,10 +24,10 @@ class Converter:
                               padx = 10, pady = 10)
     self.sngle_button.grid(row = 1)
 
-    # Multiplayer Button:
-    self.multi_buttons = Button(self.main_frame, text = "MultiPlayer",
-                                padx = 10, pady = 10)
-    self.multi_buttons.grid(row = 2)
+    # # Multiplayer Button:
+    # self.multi_buttons = Button(self.main_frame, text = "MultiPlayer",
+    #                             padx = 10, pady = 10)
+    # self.multi_buttons.grid(row = 2)
 
     # # Multiplayer Drop-down:
     def two_or_three():
@@ -38,10 +38,10 @@ class Converter:
     variable = StringVar(root)
     variable.set("Multiplayer")
     self.mult_drop = OptionMenu(root, variable, "2 Players", "3 Players")
-    self.mult_drop.grid(row = 2)
+    self.mult_drop.grid(row = 3)
 
     self.confirm_mult = Button(root, text = "Confirm", command = two_or_three)
-    self.confirm_mult.grid(row = 3)
+    self.confirm_mult.grid(row = 4)
 
     def two_play():
       print("two players")
