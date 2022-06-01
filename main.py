@@ -24,12 +24,12 @@ class Converter:
                               padx = 10, pady = 10)
     self.sngle_button.grid(row = 1)
 
-    # # Multiplayer Button:
-    # self.multi_buttons = Button(self.main_frame, text = "MultiPlayer",
-    #                             padx = 10, pady = 10)
-    # self.multi_buttons.grid(row = 2)
+    # Multiplayer Button:
+    self.multi_buttons = Button(self.main_frame, text = "MultiPlayer",
+                                padx = 10, pady = 10)
+    self.multi_buttons.grid(row = 2)
 
-    # Multiplayer Drop-down:
+    # # Multiplayer Drop-down:
     def two_or_three():
       if variable.get() == "2 Players":
         two_play()
@@ -37,7 +37,7 @@ class Converter:
         three_play()
     variable = StringVar(root)
     variable.set("Multiplayer")
-    self.mult_drop = OptionMenu(root, variable, "2 Players", "3 players")
+    self.mult_drop = OptionMenu(root, variable, "2 Players", "3 Players")
     self.mult_drop.grid(row = 2)
 
     self.confirm_mult = Button(root, text = "Confirm", command = two_or_three)
@@ -48,6 +48,8 @@ class Converter:
 
     def three_play():
       print("Three players")
+
+
 
 # main routine:
 if __name__ == "__main__":
