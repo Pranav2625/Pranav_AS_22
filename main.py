@@ -37,11 +37,11 @@ class Converter:
         three_play()
     variable = StringVar(root)
     variable.set("Multiplayer")
-    self.mult_drop = OptionMenu(root, variable, "2 Players", "3 Players")
-    self.mult_drop.grid(row = 3)
+    self.mult_drop = OptionMenu(self.main_frame, variable, "2 Players", "3 Players")
+    self.mult_drop.grid(row = 2)
 
-    self.confirm_mult = Button(root, text = "Confirm", command = two_or_three)
-    self.confirm_mult.grid(row = 4)
+    self.confirm_mult = Button(self.main_frame, text = "Confirm", command = two_or_three)
+    self.confirm_mult.grid(row = 3)
 
     def two_play():
       print("two players")
