@@ -72,7 +72,7 @@ class Single_Username:
     self.sngle_usernme_text.grid(row = 2)
     
     self.sngle_usr_back = Button(self.sngle_usr_frame, text = "Back", width = 10, bg = "orange", 
-                                 font = "arial 10 bold", command = partial(self.close_sngle_usr))
+                                 font = "arial 10 bold", command = partial(self.close_sngle_usr, partner))
     self.sngle_usr_back.grid(row = 3, pady = 10)
 
   def close_sngle_usr(self, partner):
