@@ -56,7 +56,7 @@ class Single_Username:
     
     self.sngle_usrnme_win = Toplevel() # Sets up the window
 
-    self.sngle_usrnme_win.protocol("WN_DELETE_WINDOW", partial(self.close_sngle_usr, partner)) # Releases confirm button 
+    self.sngle_usrnme_win.protocol("WM_DELETE_WINDOW", partial(self.close_sngle_usr, partner)) # Releases confirm button 
                                                                                                # when window closed
     
     self.sngle_usr_frame = Frame(self.sngle_usrnme_win, width = 600, height = 600, bg = "maroon")  # Makes the frame for this window
