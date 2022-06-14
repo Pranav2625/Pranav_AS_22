@@ -59,19 +59,21 @@ class Single_Username:
     self.sngle_usrnme_win.protocol("WN_DELETE_WINDOW", partial(self.close_sngle_usr, partner)) # Releases confirm button 
                                                                                                # when window closed
     
-    self.sngle_usr_frame  = Frame(self.sngle_usrnme_win, width = 600, height = 600, bg = "maroon")  # Makes the frame for this window
+    self.sngle_usr_frame = Frame(self.sngle_usrnme_win, width = 600, height = 600, bg = "maroon")  # Makes the frame for this window
     self.sngle_usr_frame.grid()
 
+    # self.sngle_usr_heading = Lable(self.)
+    
     # self.sngle_usr_txt_box = Text(self.sngle_usrnme_win)
     # self.sngle_usr_txt_box.grid(row = 1)
 
-    self.sngle_usernme_text = Label(self.sngle_usrnme_win, text = "", justify = LEFT, 
+    self.sngle_usernme_text = Label(self.sngle_usr_frame, text = "", font = "arial 14 bold", justify = CENTER, 
                                     width = 40, bg = "orange", wrap = 250)
     self.sngle_usernme_text.grid(row = 2)
     
-    self.sngle_usr_back = Button(self.sngle_usrnme_win, text = "Dismiss", width = 10, bg = "Blue", 
+    self.sngle_usr_back = Button(self.sngle_usr_frame, text = "Back", width = 10, bg = "orange", 
                                  font = "arial 10 bold", command = partial(self.close_sngle_usr))
-    self.sngle_usr_back.grid(row = 2, pady = 10)
+    self.sngle_usr_back.grid(row = 3, pady = 10)
 
   def close_sngle_usr(self, partner):
     partner.sngle_button.config(state = NORMAL)
