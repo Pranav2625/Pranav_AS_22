@@ -58,39 +58,42 @@ class Single_Username:
     
     self.sngle_usrnme_win = Toplevel() # Sets up the window
 
-    self.sngle_usrnme_win.protocol("WM_DELETE_WINDOW", partial(self.close_sngle_usr, partner)) # Releases confirm button 
+    self.sngle_usrnme_win.protocol("WM_DELETE_WINDOW", partial(self.close_sngle_usrnme, partner)) # Releases confirm button 
                                                                                                # when window closed
     
-    self.sngle_usr_frame = Frame(self.sngle_usrnme_win, width = 600, height = 600, bg = "maroon")  # Makes the frame for this window
-    self.sngle_usr_frame.grid()
+    self.sngle_usrnme_frame = Frame(self.sngle_usrnme_win, width = 600, height = 600, bg = "maroon")  # Makes the frame for this window
+    self.sngle_usrnme_frame.grid()
 
-    self.sngle_usernme_text = Label(self.sngle_usr_frame, text = "", font = "arial 14 bold", justify = CENTER,  # Adds the heading
+    self.sngle_usernme_text = Label(self.sngle_usrnme_frame, text = "", font = "arial 14 bold", justify = CENTER,  # Adds the heading
                                     width = 40, bg = "orange", wrap = 250)
     self.sngle_usernme_text.grid(row = 0)
 
     def prnt_sngle_usr():                                    # Carries out defintion if confirm is pushed
-      sngle_username = self.sngle_usr_entry_box.get()        # Stores the input text from the entry field in this variable as string
+      sngle_username = self.sngle_usrnme_entry_box.get()        # Stores the input text from the entry field in this variable as string
       print("Hello", sngle_username)                         # and prints it out
     
-    self.sngle_usr_entry_box = Entry(self.sngle_usr_frame, width = 20, font = "arial 14") # Creates the entry box
-    self.sngle_usr_entry_box.grid(row = 2, pady = 10)
+    self.sngle_usrnme_entry_box = Entry(self.sngle_usrnme_frame, width = 20, font = "arial 14") # Creates the entry box
+    self.sngle_usrnme_entry_box.grid(row = 2, pady = 10)
 
-    self.sngle_usr_confirm = Button(self.sngle_usr_frame, text = "Confirm", bg = "gold", font = "arial 10 bold", # Creates
+    self.sngle_usrnme_confirm = Button(self.sngle_usrnme_frame, text = "Confirm", bg = "gold", font = "arial 10 bold", # Creates
                                    command = prnt_sngle_usr)                                                     # confirm button
-    self.sngle_usr_confirm.grid(row = 4, pady = 10)
+    self.sngle_usrnme_confirm.grid(row = 4, pady = 10)
     
-    self.sngle_usr_back = Button(self.sngle_usr_frame, text = "Back", width = 10, bg = "orange",           # Creates back button
-                                 font = "arial 10 bold", command = partial(self.close_sngle_usr, partner))
+    self.sngle_usr_back = Button(self.sngle_usrnme_frame, text = "Back", width = 10, bg = "orange",           # Creates back button
+                                 font = "arial 10 bold", command = partial(self.close_sngle_usrnme, partner))
     self.sngle_usr_back.grid(row = 6, pady = 10)
 
-  def close_sngle_usr(self, partner):             # If either the back button or window is closed
+  def close_sngle_usrnme(self, partner):             # If either the back button or window is closed
     partner.sngle_button.config(state = NORMAL)   # revert the single player button back to normal
     self.sngle_usrnme_win.destroy()               # and destroy the window
 
 
 # class Double_Username:
 #   def __init__(self, partner):
-#     print("hello")
+
+#     partner.confirm_mult.config(state = DISABLED)
+
+#     self.dble_usrnme_win
     
 # main routine:
 if __name__ == "__main__":
