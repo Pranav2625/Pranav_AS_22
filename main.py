@@ -65,11 +65,16 @@ class Single_Username:
     self.sngle_usernme_text = Label(self.sngle_usr_frame, text = "", font = "arial 14 bold", justify = CENTER, 
                                     width = 40, bg = "orange", wrap = 250)
     self.sngle_usernme_text.grid(row = 0)
+
+    def prnt_sngle_usr():
+      sngle_username = self.sngle_usr_entry_box.get()
+      print("Hello", sngle_username)
     
     self.sngle_usr_entry_box = Entry(self.sngle_usr_frame, width = 20, font = "arial 14")
     self.sngle_usr_entry_box.grid(row = 2, pady = 10)
 
-    self.sngle_usr_confirm = Button(self.sngle_usr_frame, text = "Confirm", bg = "gold", font = "arial 10 bold")
+    self.sngle_usr_confirm = Button(self.sngle_usr_frame, text = "Confirm", bg = "gold", font = "arial 10 bold",
+                                   command = prnt_sngle_usr)
     self.sngle_usr_confirm.grid(row = 4, pady = 10)
     
     self.sngle_usr_back = Button(self.sngle_usr_frame, text = "Back", width = 10, bg = "orange", 
