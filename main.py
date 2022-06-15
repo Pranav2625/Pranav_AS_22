@@ -22,7 +22,7 @@ class Main_screen:
     # Single Player button:
     self.sngle_button = Button(self.main_frame, text = "Single Player",  # Creates a button for
                               padx = 10, pady = 10, command = self.single_username)                      # Single player mode
-    self.sngle_button.grid(row = 1)                                      # and puts it onto the grid
+    self.sngle_button.grid(row = 1, pady = 10)                                      # and puts it onto the grid
 
     # # Multiplayer Drop-down:
     def two_or_three():
@@ -33,10 +33,10 @@ class Main_screen:
     variable = StringVar(root)
     variable.set("Multiplayer")
     self.mult_drop = OptionMenu(self.main_frame, variable, "2 Players", "3 Players")     # Create the menu and it's options
-    self.mult_drop.grid(row = 2)                                                         # and put it on the grid
+    self.mult_drop.grid(row = 2, pady = 5)                                                         # and put it on the grid
 
     self.confirm_mult = Button(self.main_frame, text = "Confirm", command = two_or_three)  # Create the confirm button
-    self.confirm_mult.grid(row = 3)                                                        
+    self.confirm_mult.grid(row = 3, pady = 2)                                                        
 
     def two_play():
       print("two players")
@@ -62,18 +62,19 @@ class Single_Username:
     self.sngle_usr_frame = Frame(self.sngle_usrnme_win, width = 600, height = 600, bg = "maroon")  # Makes the frame for this window
     self.sngle_usr_frame.grid()
 
-    # self.sngle_usr_heading = Lable(self.)
-    
-    # self.sngle_usr_txt_box = Text(self.sngle_usrnme_win)
-    # self.sngle_usr_txt_box.grid(row = 1)
-
     self.sngle_usernme_text = Label(self.sngle_usr_frame, text = "", font = "arial 14 bold", justify = CENTER, 
                                     width = 40, bg = "orange", wrap = 250)
-    self.sngle_usernme_text.grid(row = 2)
+    self.sngle_usernme_text.grid(row = 0)
+    
+    self.sngle_usr_entry_box = Entry(self.sngle_usr_frame, width = 20, font = "arial 14")
+    self.sngle_usr_entry_box.grid(row = 2, pady = 10)
+
+    self.sngle_usr_confirm = Button(self.sngle_usr_frame, text = "Confirm", bg = "gold", font = "arial 10 bold")
+    self.sngle_usr_confirm.grid(row = 4, pady = 10)
     
     self.sngle_usr_back = Button(self.sngle_usr_frame, text = "Back", width = 10, bg = "orange", 
                                  font = "arial 10 bold", command = partial(self.close_sngle_usr, partner))
-    self.sngle_usr_back.grid(row = 3, pady = 10)
+    self.sngle_usr_back.grid(row = 6, pady = 10)
 
   def close_sngle_usr(self, partner):
     partner.sngle_button.config(state = NORMAL)
