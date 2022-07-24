@@ -1,181 +1,138 @@
 from tkinter import *
-from functools import partial  # To prevent unwanted windows
- # import random
+from functools import partial
+
+root = Tk()
+root.title("Home")
+
+home_frame = Frame(root, width=600, height=600, bg="maroon")
+home_frame.grid()
+
+home_header = Label(home_frame, text="Blackjack", font=("Times 16 bold"),
+                    bg="gold", padx=270, pady=10, justify=CENTER)
+home_header.place(x=-10, y=0)
 
 
-class Main_screen:
-  def __init__(self, parent):
 
-    # Formatting variables:
+def Single_Username():
+    sngle_usrnme_win = Toplevel(root)
 
-    # Main Screen GUI:
-    self.main_frame = Frame(width = 600, height = 600, bg = "maroon",  # Both these lines are the features of 
-                            pady = 10)                                 # the main window frame
-    self.main_frame.grid()
+    sngle_but.config(state=DISABLED)
 
-    # Home Screen Heading:
-    self.home_scrn_label = Label(self.main_frame, text = "Blackjack",    # Makes the title heading for the window
-                                font = ("Italic", "16", "bold"),         # using a specfic font
-                                bg = "gold", padx = 200, pady = 10)      # and a label colour
-    self.home_scrn_label.grid(row = 0)                                   # and applies it to the interface's grid
+    def close_sngle_usrnme():  # If either the back button or window is closed
+        sngle_but.config(state=NORMAL)  # revert the single player button back to normal
+        sngle_usrnme_win.destroy()
+    sngle_usrnme_win.protocol("WM_DELETE_WINDOW", partial(close_sngle_usrnme))
 
-    # Single Player button:
-    self.sngle_button = Button(self.main_frame, text = "Single Player", font = "arial 10 bold",   # Creates a button for
-                              padx = 10, pady = 10, command = self.single_username)               # Single player mode
-    self.sngle_button.grid(row = 1, pady = 10)                                      # and puts it onto the grid
+    sngle_usrnme_frame = Frame(sngle_usrnme_win, width=600, height=600, bg="maroon")
+    sngle_usrnme_frame.grid()
 
-    # # Multiplayer Drop-down:
-    def two_or_three():
-      if variable.get() == "2 Players":                      # If 2 players selected
-        two_play()                                           # goto two_play()
-      if variable.get() == "3 Players":                      # If 3 players selected
-        three_play()                                         # goto three_play()
-    variable = StringVar(root)
-    variable.set("Multiplayer")
-    self.mult_drop = OptionMenu(self.main_frame, variable, "2 Players", "3 Players")     # Create the menu and it's options
-    self.mult_drop.grid(row = 2, pady = 5)                                                         # and put it on the grid
+    sngle_usrnme_header = Label(sngle_usrnme_frame, text="Enter in a username", font="arial 14 bold", justify=CENTER,
+                              width=40, bg="orange", wrap=250)
+    sngle_usrnme_header.grid(row=0)
 
-    self.confirm_mult = Button(self.main_frame, text = "Confirm", font = "arial 10 bold", command = two_or_three)  # Create the confirm button
-    self.confirm_mult.grid(row = 3, pady = 2)                                                        
+    def prnt_sngle_usrnme():  # Carries out defintion if confirm is pushed
+        sngle_username = sngle_usrnme_entry_box.get()  # Stores the input text from the entry field in this variable as string
+        print("Hello", sngle_username)  # and prints it out
 
-    def two_play():                                                                          # If two players are selected...
-      get_dble_usrnme = Double_Username(self)                                              # goto the Double_Username class
-      get_dble_usrnme.dble_usrnme_text.configure(text = "Enter in usernames for the two players") # And make this the heading
+    sngle_usrnme_entry_box = Entry(sngle_usrnme_frame, width=20, font="arial 14")  # Creates the entry box
+    sngle_usrnme_entry_box.grid(row=2, pady=10)
 
-    def three_play():                                                  # If three players are selected...
-      get_trp_usrnme = Triple_Username(self)                           # goto the Triple_Username
-      get_trp_usrnme.trp_usrnme_text.configure(text = "Enter in usernames for the three players") # and setup the heading
+    sngle_usrnme_confirm = Button(sngle_usrnme_frame, text="Confirm", bg="gold", font="arial 10 bold",
+                                  # Creates
+                                  command=prnt_sngle_usrnme)  # confirm button
+    sngle_usrnme_confirm.grid(row=4, pady=10)
 
-  def single_username(self):                                           # When the single player button is pressed
-    get_sngle_usrnme = Single_Username(self)                          # Calls on the Single_Username class
-    get_sngle_usrnme.sngle_usrnme_text.configure(text = "Enter in a username") # and makes the heading of the window
+    sngle_usrnme_back = Button(sngle_usrnme_frame, text="Back", width=10, bg="orange",  # Creates back button
+                               font="arial 10 bold", command=partial(close_sngle_usrnme))
+    sngle_usrnme_back.grid(row=6, pady=10)
 
-class Single_Username:
-  def __init__(self, partner):
-
-    partner.sngle_button.config(state = DISABLED) # Disables the confirm button when 
-                                                 # while this window is open
-    
-    self.sngle_usrnme_win = Toplevel() # Sets up the window
-
-    self.sngle_usrnme_win.protocol("WM_DELETE_WINDOW", partial(self.close_sngle_usrnme, partner)) # Releases confirm button 
-                                                                                               # when window closed
-    
-    self.sngle_usrnme_frame = Frame(self.sngle_usrnme_win, width = 600, height = 600, bg = "maroon")  # Makes the frame for this window
-    self.sngle_usrnme_frame.grid()
-
-    self.sngle_usrnme_text = Label(self.sngle_usrnme_frame, text = "", font = "arial 14 bold", justify = CENTER,  # Adds the heading
-                                    width = 40, bg = "orange", wrap = 250)
-    self.sngle_usrnme_text.grid(row = 0)
-
-    def prnt_sngle_usrnme():                                    # Carries out defintion if confirm is pushed
-      sngle_username = self.sngle_usrnme_entry_box.get()        # Stores the input text from the entry field in this variable as string
-      print("Hello", sngle_username)                         # and prints it out
-    
-    self.sngle_usrnme_entry_box = Entry(self.sngle_usrnme_frame, width = 20, font = "arial 14") # Creates the entry box
-    self.sngle_usrnme_entry_box.grid(row = 2, pady = 10)
-
-    self.sngle_usrnme_confirm = Button(self.sngle_usrnme_frame, text = "Confirm", bg = "gold", font = "arial 10 bold", # Creates
-                                   command = prnt_sngle_usrnme)                                                     # confirm button
-    self.sngle_usrnme_confirm.grid(row = 4, pady = 10)
-    
-    self.sngle_usrnme_back = Button(self.sngle_usrnme_frame, text = "Back", width = 10, bg = "orange",           # Creates back button
-                                 font = "arial 10 bold", command = partial(self.close_sngle_usrnme, partner))
-    self.sngle_usrnme_back.grid(row = 6, pady = 10)
-
-  def close_sngle_usrnme(self, partner):             # If either the back button or window is closed
-    partner.sngle_button.config(state = NORMAL)   # revert the single player button back to normal
-    self.sngle_usrnme_win.destroy()               # and destroy the window
+sngle_but = Button(home_frame, text="Single-player", font="arial 10 bold", bd=1, command=Single_Username)
+sngle_but.place(x=250, y=150)
 
 
-class Double_Username:
-  def __init__(self, partner):
 
-    partner.confirm_mult.config(state = DISABLED) # Confirm button disabled while window is open
+def Double_Username():
+    dble_usrnme_win = Toplevel(root)
 
-    self.dble_usrnme_win = Toplevel() # Setsup window
+    dble_but.config(state=DISABLED)
 
-    self.dble_usrnme_win.protocol("WM_DELETE_WINDOW", partial(self.close_dble_usrnme, partner)) # For when users closes tabs with 
-                                                                                                # X button
+    def close_dble_usrnme():  # If either the back button or window is closed
+        dble_but.config(state=NORMAL)  # revert the single player button back to normal
+        dble_usrnme_win.destroy()
+    dble_usrnme_win.protocol("WM_DELETE_WINDOW", partial(close_dble_usrnme))
 
-    self.dble_usrnme_frame = Frame(self.dble_usrnme_win, width = 600, height = 600, bg = "maroon") # Frame for the window
-    self.dble_usrnme_frame.grid()
+    dble_usrnme_frame = Frame(dble_usrnme_win, width=600, height=600, bg="maroon")
+    dble_usrnme_frame.grid()
 
-    self.dble_usrnme_text = Label(self.dble_usrnme_frame, text = "", font = "arial 14 bold", # Window heading
-                                  justify = CENTER, width = 40, bg = "orange", wrap = 250)
-    self.dble_usrnme_text.grid(row = 0)
+    dble_usrnme_header = Label(dble_usrnme_frame, text="Enter in two usernames", font="Times 14 bold",
+                               justify=CENTER, bg="gold", padx=270, pady=10)
+    dble_usrnme_header.place(x=-40, y=0)
 
-    def prnt_dble_usrnme():                               # When confirmed is pushed...
-      dble_username1 = self.dble_usrnme_entry_box1.get()  # Store the usr input in
-      dble_username2 = self.dble_usrnme_entry_box2.get()  # these two varibales
-      print("Hello", dble_username1, "&", dble_username2) # and print this statement in the terminal
-    
-    self.dble_usrnme_entry_box1 = Entry(self.dble_usrnme_frame, width = 20, font = "arial 12") # Make two   
-    self.dble_usrnme_entry_box1.grid(row = 2, pady = 10)                                       # entry
-    self.dble_usrnme_entry_box2 = Entry(self.dble_usrnme_frame, width = 20, font = "arial 12") # boxes
-    self.dble_usrnme_entry_box2.grid(row = 3, pady = 5)
+    def prnt_dble_usrnme():  # When confirmed is pushed...
+        dble_username1 = dble_usrnme_entry_box1.get()  # Store the usr input in
+        dble_username2 = dble_usrnme_entry_box2.get()  # these two variables
+        print("Hello", dble_username1, "&", dble_username2)  # and print this statement in the terminal
 
-    self.dble_usrnme_confirm = Button(self.dble_usrnme_frame, text = "Confirm", bg = "gold", # Confrim button for
-                                      font = "arial 10 bold", command = prnt_dble_usrnme)    # username input
-    self.dble_usrnme_confirm.grid(row = 4, pady = 10)
+    dble_usrnme_entry_box1 = Entry(dble_usrnme_frame, width=20, font="arial 12")  # Make two
+    dble_usrnme_entry_box1.place(x=230, y=100)  # entry
+    dble_usrnme_entry_box2 = Entry(dble_usrnme_frame, width=20, font="arial 12")  # boxes
+    dble_usrnme_entry_box2.place(x=230, y=150)
 
-    self.dble_usrnme_back = Button(self.dble_usrnme_frame, text = "Back", bg = "orange",   # Back button
-                                   font = "arial 10 bold", 
-                                   command = partial(self.close_dble_usrnme, partner))
-    self.dble_usrnme_back.grid(row = 6, pady = 10)
+    dble_usrnme_confirm = Button(dble_usrnme_frame, text="Confirm", bg="gold",  # Confirm button for
+                                      font="arial 10 bold", command=prnt_dble_usrnme)  # username input
+    dble_usrnme_confirm.place(x=265, y=200)
 
-  def close_dble_usrnme(self, partner):            # If either back or the X button is pushed...
-      partner.confirm_mult.config(state = NORMAL)  # revert the multiplayer confirm button back to normal
-      self.dble_usrnme_win.destroy()               # and destroy the window
+    dble_usrnme_back = Button(dble_usrnme_frame, text="Back", bg="orange",  # Creates back button
+                               font="arial 10 bold", command=partial(close_dble_usrnme))
+    dble_usrnme_back.place(x=270, y=230)
 
 
-class Triple_Username:
-  def __init__(self, partner):
+dble_but = Button(home_frame, text="Two Players", font="arial 10 bold", bd=1, command=Double_Username)
+dble_but.place(x=252, y=200)
 
-    partner.confirm_mult.config(state = DISABLED)
 
-    self.trp_usrnme_win = Toplevel()
 
-    self.trp_usrnme_win.protocol("WM_DELETE_WINDOW", partial(self.close_trp_usrnme, partner))
+def Triple_Username():
+    trpe_usrnme_win = Toplevel(root)
 
-    self.trp_usrnme_frame = Frame(self.trp_usrnme_win, width = 600, 
-                                  height = 300, bg = "maroon")
-    self.trp_usrnme_frame.grid()
+    trpe_but.config(state=DISABLED)
 
-    self.trp_usrnme_text = Label(self.trp_usrnme_frame, text = "", font = "arial 14 bold",
-                                justify = CENTER, bg = "orange", wrap = 500)
-    self.trp_usrnme_text.grid(row = 0)
+    def close_trpe_usrnme():
+        trpe_but.config(state=NORMAL)
+        trpe_usrnme_win.destroy()
 
-    def prnt_trp_usrnme():
-      trp_username1 = self.trp_usrnme_entry_box1.get()
-      trp_username2 = self.trp_usrnme_entry_box2.get()
-      trp_username3 = self.trp_usrnme_entry_box3.get()
-      print("Hello", trp_username1, ",", trp_username2, ", &", trp_username3)
-    
-    self.trp_usrnme_entry_box1 = Entry(self.trp_usrnme_frame, width = 20, font = "arial 12")
-    self.trp_usrnme_entry_box1.grid(row = 2, pady = 5)
-    self.trp_usrnme_entry_box2 = Entry(self.trp_usrnme_frame, width = 20, font = "arial 12")
-    self.trp_usrnme_entry_box2.grid(row = 3, pady = 5)
-    self.trp_usrnme_entry_box3 = Entry(self.trp_usrnme_frame, width = 20, font = "arial 12")
-    self.trp_usrnme_entry_box3.grid(row = 4, pady = 5)
+    trpe_usrnme_win.protocol("WM_DELETE_WINDOW", partial(close_trpe_usrnme))
 
-    self.trp_usrnme_confirm = Button(self.trp_usrnme_frame, text = "Confirm", bg = "gold",
-                                    font = "arial 10 bold", command = prnt_trp_usrnme)
-    self.trp_usrnme_confirm.grid(row = 5, pady = 5)
+    trpe_usrnme_frame = Frame(trpe_usrnme_win, width=600, height=600, bg="maroon")
+    trpe_usrnme_frame.grid()
 
-    self.trp_usrnme_back = Button(self.trp_usrnme_frame, text = "Back", bg = "orange",
-                                 font = "arial 10 bold",
-                                 command = partial(self.close_trp_usrnme, partner))
-    self.trp_usrnme_back.grid(row = 7, pady = 10)
+    trpe_usrnme_header = Label(trpe_usrnme_frame, text="Enter in three usernames", font="Times 14 bold",
+                               bg="gold", padx=270, pady=10)
+    trpe_usrnme_header.place(x=-50, y=0)
 
-  def close_trp_usrnme(self, partner):
-    partner.confirm_mult.config(state = NORMAL)  # revert the multiplayer confirm button back to normal
-    self.trp_usrnme_win.destroy()
-    
-    
-# main routine:
-if __name__ == "__main__":
-  root = Tk()
-  root.title("Blackjack Home Screen")  # Name of the windows
-  something = Main_screen(root)
-  root.mainloop()
+    def prnt_trp_usrnme():  # When the inputs are confirmed using buttons
+        trp_username1 = trp_usrnme_entry_box1.get()  # store these inputs as string variables
+        trp_username2 = trp_usrnme_entry_box2.get()
+        trp_username3 = trp_usrnme_entry_box3.get()
+        print("Hello", trp_username1, ",", trp_username2, ", &", trp_username3)  # Print them in a statement
+
+    trp_usrnme_entry_box1 = Entry(trpe_usrnme_frame, width=20, font="arial 12")  # Entry boxes for the window
+    trp_usrnme_entry_box1.place(x=230, y=100)
+    trp_usrnme_entry_box2 = Entry(trpe_usrnme_frame, width=20, font="arial 12")
+    trp_usrnme_entry_box2.place(x=230, y=150)
+    trp_usrnme_entry_box3 = Entry(trpe_usrnme_frame, width=20, font="arial 12")
+    trp_usrnme_entry_box3.place(x=230, y=200)
+
+    trpe_usrnme_confirm = Button(trpe_usrnme_frame, text="Confirm", bg="gold",  # Confirm button
+                                     font="arial 10 bold", command=prnt_trp_usrnme)
+    trpe_usrnme_confirm.place(x=265, y=250)
+
+    trpe_usrnme_back = Button(trpe_usrnme_frame, text="Back", bg="orange",  # Back button
+                                  font="arial 10 bold",
+                                  command=partial(close_trpe_usrnme))
+    trpe_usrnme_back.place(x=270, y=280)
+
+trpe_but = Button(home_frame, text="Three Players", font="arial 10 bold", bd=1, command=Triple_Username)
+trpe_but.place(x=248, y=250)
+
+root.mainloop()
