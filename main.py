@@ -1,16 +1,18 @@
 from tkinter import *
 from functools import partial
+import random
+import sys
+
 
 root = Tk()
 root.title("Home")
 
-home_frame = Frame(root, width=600, height=600, bg="maroon")
+home_frame = Frame(root, width=600, height=400, bg="maroon")
 home_frame.grid()
 
 home_header = Label(home_frame, text="Blackjack", font=("Times 16 bold"),
                     bg="gold", padx=270, pady=10, justify=CENTER)
 home_header.place(x=-10, y=0)
-
 
 
 def Single_Username():
@@ -33,6 +35,7 @@ def Single_Username():
     def prnt_sngle_usrnme():  # Carries out defintion if confirm is pushed
         sngle_username = sngle_usrnme_entry_box.get()  # Stores the input text from the entry field in this variable as string
         print("Hello", sngle_username)  # and prints it out
+        Single_Player()
 
     sngle_usrnme_entry_box = Entry(sngle_usrnme_frame, width=20, font="arial 14")  # Creates the entry box
     sngle_usrnme_entry_box.grid(row=2, pady=10)
