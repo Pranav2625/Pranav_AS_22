@@ -3,6 +3,9 @@ from functools import partial
 import random
 import sys
 
+sngle_creds = 500  # Intial value of credits
+sngle_bets = 0  # and bets
+
 root = Tk()
 root.title("Home")
 
@@ -64,8 +67,8 @@ def Single_Username():
             pady=12)  # of the table
         dealer_side.place(x=-10, y=0)
 
-        sngle_creds = 500  # Intial value of credits
-        sngle_bets = 0  # and bets
+        # sngle_creds = 500  # Intial value of credits
+        # sngle_bets = 0  # and bets
 
         def sngle_generate():
             global sngle_card_play_1
@@ -133,22 +136,22 @@ def Single_Username():
             sngle_bet_add_sub_var.set(5)
 
         sngle_creds_counter = StringVar()
-        sngle_creds_counter.set("Credits: $500")
+        sngle_creds_counter.set("Credits: $500.00")
         sngle_creds_dsiplay = Label(
             sngle_frame,
             textvariable=sngle_creds_counter,
             bg="orange",
             font="Times 10")  # Makes the credits counter display
-        sngle_creds_dsiplay.place(x=580, y=70)
+        sngle_creds_dsiplay.place(x=560, y=70)
 
         sngle_bets_counter = StringVar()  # Sets variable as a string varible
-        sngle_bets_counter.set("Bets: $0")  # Sets the text of the string
+        sngle_bets_counter.set("Bets: $0.00")  # Sets the text of the string
         sngle_bets_display = Label(
             sngle_frame,
             textvariable=sngle_bets_counter,
             bg="orange",
             font="Times 10")  # Makes the bets counter display
-        sngle_bets_display.place(x=617, y=100)
+        sngle_bets_display.place(x=592, y=100)
 
         sngle_bet_add_sub_var = IntVar()  # Assigns this as an intger variable
         sngle_bet_add_sub_var.set(5)  # Sets a numerical value
