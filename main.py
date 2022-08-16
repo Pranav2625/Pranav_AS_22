@@ -307,7 +307,9 @@ def Single_Username():
             sngle_exit_text.place(x=10, y=0)
 
             def sngle_exit_y():
-                sys.exit()
+                sngle_exit_but.config(state=NORMAL)
+                sngle_play_win.destroy()
+                sngle_exit_win.destroy()
 
             sngle_ext_y_but = Button(sngle_exit_frame,
                                      text="Yes",
@@ -329,8 +331,6 @@ def Single_Username():
                                 bd=1,
                                 command=sngle_exit)
         sngle_exit_but.place(x=580, y=400)
-
-      
 
     def prnt_sngle_usrnme():  # Carries out defintion if confirm is pushed
         sngle_username = sngle_usrnme_entry_box.get(
