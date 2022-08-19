@@ -67,40 +67,6 @@ def Single_Username():
             pady=12)  # of the table
         dealer_side.place(x=-10, y=0)
 
-        # sngle_creds = 500  # Intial value of credits
-        # sngle_bets = 0  # and bets
-
-        def sngle_generate():
-            global sngle_card_play_1
-            global sngle_card_play_2
-            global sngle_hit_card
-            global sngle_card_play_ttl
-            global sngle_card_deal_1
-            global sngle_card_deal_2
-            global sngle_card_deal_ttl
-            sngle_card_play_1 = random.randint(
-                1, 11)  # Make two random cards that
-            sngle_card_play_2 = random.randint(
-                1, 11)  # will be used for the player
-            sngle_hit_card = random.randint(1, 11)  # Used for hit
-            sngle_card_play_ttl = (sngle_card_play_1 + sngle_card_play_2
-                                   )  # Total for player cards
-            sngle_card_deal_1 = random.randint(1,
-                                               11)  # Make two random cards for
-            sngle_card_deal_2 = random.randint(1, 11)  # the dealer
-            sngle_card_deal_ttl = (sngle_card_deal_1 + sngle_card_deal_2
-                                   )  # Total for dealer cards
-            sngle_cnfrm_bet()
-
-        def sngle_button_state():
-            sngle_hit_button.config(state=DISABLED)  # disable action buttons
-            sngle_stay_button.config(state=DISABLED)
-            sngle_double_button.config(state=DISABLED)
-            sngle_bet_add_but.config(
-                state=NORMAL)  # revert the buttons back to normal
-            sngle_bet_sub_but.config(state=NORMAL)
-            sngle_confirm_bet.config(state=NORMAL)
-
         def sngle_credits_add():
             global sngle_creds  # Get the credits count
             sngle_cred_add = sngle_bets  # Variable that stores players bets
@@ -145,13 +111,13 @@ def Single_Username():
         sngle_creds_dsiplay.place(x=560, y=70)
 
         sngle_bets_counter = StringVar()  # Sets variable as a string varible
-        sngle_bets_counter.set("Bets: $0.00")  # Sets the text of the string
+        sngle_bets_counter.set("Bets: $5.00")  # Sets the text of the string
         sngle_bets_display = Label(
             sngle_frame,
             textvariable=sngle_bets_counter,
             bg="orange",
             font="Times 10")  # Makes the bets counter display
-        sngle_bets_display.place(x=592, y=100)
+        sngle_bets_display.place(x=596, y=100)
 
         sngle_bet_add_sub_var = IntVar()  # Assigns this as an intger variable
         sngle_bet_add_sub_var.set(5)  # Sets a numerical value
@@ -167,6 +133,37 @@ def Single_Username():
                                    bd=1,
                                    command=sngle_bets_sub)
         sngle_bet_sub_but.place(x=580, y=180)  # Button for removing bets
+
+        def sngle_button_state():
+            sngle_hit_button.config(state=DISABLED)  # disable action buttons
+            sngle_stay_button.config(state=DISABLED)
+            sngle_double_button.config(state=DISABLED)
+            sngle_bet_add_but.config(
+                state=NORMAL)  # revert the buttons back to normal
+            sngle_bet_sub_but.config(state=NORMAL)
+            sngle_confirm_bet.config(state=NORMAL)
+
+        def sngle_generate():
+            global sngle_card_play_1
+            global sngle_card_play_2
+            global sngle_hit_card
+            global sngle_card_play_ttl
+            global sngle_card_deal_1
+            global sngle_card_deal_2
+            global sngle_card_deal_ttl
+            sngle_card_play_1 = random.randint(
+                1, 11)  # Make two random cards that
+            sngle_card_play_2 = random.randint(
+                1, 11)  # will be used for the player
+            sngle_hit_card = random.randint(1, 11)  # Used for hit
+            sngle_card_play_ttl = (sngle_card_play_1 + sngle_card_play_2
+                                   )  # Total for player cards
+            sngle_card_deal_1 = random.randint(1,
+                                               11)  # Make two random cards for
+            sngle_card_deal_2 = random.randint(1, 11)  # the dealer
+            sngle_card_deal_ttl = (sngle_card_deal_1 + sngle_card_deal_2
+                                   )  # Total for dealer cards
+            sngle_cnfrm_bet()
 
         def sngle_cnfrm_bet():
             sngle_bet_add_but.config(state=DISABLED)  # Disbale add bets
